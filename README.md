@@ -1,2 +1,2 @@
 # sysopoly
-Vue, Vite, TypeScript, SWC frontend for sysopoly.com domain
+React, Vite, TypeScript, SWC frontend for sysopoly.com domain
