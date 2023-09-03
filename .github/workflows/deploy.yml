@@ -15,8 +15,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node v ${{ matrix.node-version}}
         uses: actions/setup-node@v3
+        with: 
+          node-version: ${{ matrix.node-version}}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
