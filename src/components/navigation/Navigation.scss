@@ -1,0 +1,145 @@
+.navContainer {
+  background: black;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  text-align: left;
+  padding: 0.2em 1.5em;
+}
+
+.burger {
+  display: none;
+
+  @media (max-width: 992px) {
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: #ccc;
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+  }
+
+  &.is_open {
+    :nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    :nth-child(2) {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    :nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &.is_closed {
+    :nth-child(1) {
+      transform: rotate(0);
+    }
+
+    :nth-child(2) {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    :nth-child(3) {
+      transform: rotate(0);
+    }
+  }
+}
+
+.rightNav {
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 0;
+  height: 100%;
+  align-items: center;
+
+  .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+
+  .nav-link {
+    width: 10vw;
+    display: flex;
+
+    a {
+      text-decoration: none;
+      color: white;
+      position: relative;
+      width: 100%;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+        sans-serif;
+      padding: 10px 20px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 0.2em;
+        background-color: #0aefff;
+        transition: width 0.5s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      &.active::after {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    flex-flow: column wrap;
+    /* Change flex direction */
+    background-color: #0d2538;
+    position: fixed;
+    padding-left: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    padding-top: 3.5rem;
+    transition: transform 0.3s ease-in-out;
+
+    &.is_open {
+      transform: translateX(0);
+    }
+
+    &.is_closed {
+      transform: translateX(100%);
+    }
+
+    .nav-link {
+      height: 5vh;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
